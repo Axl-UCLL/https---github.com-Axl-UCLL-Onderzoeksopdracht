@@ -1,0 +1,66 @@
+  body {
+      font-family: system-ui, sans-serif;
+      padding: 50px;
+      background: #f6f8fa;
+  }
+
+  h2 {
+      margin-top: 60px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+  }
+
+  button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin: 40px 0;
+  }
+
+  /* ---------- OUD: Klassieke tooltip ---------- */
+
+  .tooltip-old {
+      position: absolute;
+      background: #333;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      display: none;
+      pointer-events: none;
+  }
+
+  /* ---------- NIEUW: nieuwe tooltip (anchor positioning) ---------- */
+
+  #info-btn {
+      anchor-name: --info-anchor;
+  }
+
+  .tooltip-new {
+      position: absolute;
+      position-anchor: --info-anchor;
+      top: anchor(bottom);
+      left: anchor(center);
+      transform: translateX(-50%);
+      background: #007bff;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 4px;
+      font-size: 14px;
+      display: none;
+      pointer-events: none;
+  }
+
+  /* laat de tooltip zien als we hoveren */
+  #info-btn:hover+.tooltip-new {
+      display: block;
+  }
+
+  /* Fallback voor browsers zonder ondersteuning */
+  @supports not (position-anchor: --info-anchor) {
+      .tooltip-new {
+          top: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+  }
