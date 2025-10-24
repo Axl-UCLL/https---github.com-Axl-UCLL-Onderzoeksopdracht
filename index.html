@@ -4,24 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CSS Anchor Positioning Demo</title>
+    <title>CSS Anchor Positioning Demo – Tooltip</title>
     <link rel="stylesheet" href="stylesheet.css">
 </head>
 
 <body>
-    <h1>Demo: Tooltips - Oud vs Nieuw</h1>
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="main-nav">
+        <a class="nav-link active" href="index.html">Tooltip</a>
+        <a class="nav-link" href="dropdown.html">Dropdown</a>
+    </nav>
 
-    <!-- ================== OUD ================== -->
-    <h2>Oud voorbeeld – met JavaScript</h2>
+    <main class="page-content">
+        <h1>Demo: Tooltips - Oud vs Nieuw</h1>
 
-    <button id="old-btn">Hover mij</button>
-    <div class="tooltip-old" id="old-tooltip">Dit is een tooltip (JS versie)</div>
+        <!-- ================== OUD ================== -->
+        <h2>Oud voorbeeld – met JavaScript</h2>
 
-    <!-- ================== NIEUW ================== -->
-    <h2>Nieuw voorbeeld – CSS Anchor Positioning</h2>
+        <button id="old-btn">Hover mij</button>
+        <div class="tooltip-old" id="old-tooltip">Dit is een tooltip (JS versie)</div>
 
-    <button id="info-btn">Hover mij</button>
-    <div class="tooltip-new">Dit is een tooltip (CSS versie)</div>
+        <!-- ================== NIEUW ================== -->
+        <h2>Nieuw voorbeeld – CSS Anchor Positioning</h2>
+
+        <button id="info-btn">Hover mij</button>
+        <div class="tooltip-new">Dit is een tooltip (CSS versie)</div>
+    </main>
 
     <script src="script.js"></script>
 </body>

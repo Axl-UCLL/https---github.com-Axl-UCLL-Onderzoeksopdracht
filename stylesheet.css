@@ -1,66 +1,195 @@
-  body {
-      font-family: system-ui, sans-serif;
-      padding: 50px;
-      background: #f6f8fa;
-  }
+/* ====== BASIS LAYOUT ====== */
 
-  h2 {
-      margin-top: 60px;
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
-  }
+body {
+    font-family: system-ui, sans-serif;
+    background: #dfdfdf;
+    margin: 0;
+}
 
-  button {
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 40px 0;
-  }
+.main-nav {
+    background: #111;
+    padding: 12px 20px;
+    display: flex;
+    gap: 20px;
+}
 
-  /* ---------- OUD: Klassieke tooltip ---------- */
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    padding-bottom: 2px;
+    border-bottom: 2px solid transparent;
+}
 
-  .tooltip-old {
-      position: absolute;
-      background: #333;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 14px;
-      display: none;
-      pointer-events: none;
-  }
+.nav-link.active {
+    border-color: #4da3ff;
+}
 
-  /* ---------- NIEUW: nieuwe tooltip (anchor positioning) ---------- */
+.page-content {
+    padding: 40px 50px;
+}
 
-  #info-btn {
-      anchor-name: --info-anchor;
-  }
+h1 {
+    margin-top: 0;
+}
 
-  .tooltip-new {
-      position: absolute;
-      position-anchor: --info-anchor;
-      top: anchor(bottom);
-      left: anchor(center);
-      transform: translateX(-50%);
-      background: #007bff;
-      color: white;
-      padding: 6px 10px;
-      border-radius: 4px;
-      font-size: 14px;
-      display: none;
-      pointer-events: none;
-  }
+h2 {
+    margin-top: 30px;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 5px;
+    font-size: 18px;
+}
 
-  /* laat de tooltip zien als we hoveren */
-  #info-btn:hover+.tooltip-new {
-      display: block;
-  }
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 20px 0;
+}
 
-  /* Fallback voor browsers zonder ondersteuning */
-  @supports not (position-anchor: --info-anchor) {
-      .tooltip-new {
-          top: 100%;
-          left: 50%;
-          transform: translateX(-50%);
-      }
-  }
+/* Kleine helpertekst */
+.note {
+    font-size: 14px;
+    color: #444;
+    background: #fff7c2;
+    padding: 10px 12px;
+    border-radius: 4px;
+    max-width: 400px;
+    line-height: 1.4;
+}
+
+/* ====== TOOLTIP: OUDE MANIER ====== */
+
+.tooltip-old {
+    position: absolute;
+    background: #333;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* ====== TOOLTIP: NIEUWE MANIER (ANCHOR POSITIONING) ====== */
+
+/* stap 1: geef de knop een anchor-name */
+#info-btn {
+    anchor-name: --info-anchor;
+}
+
+/* stap 2: de tooltip positioneert zich tov dat anchor */
+.tooltip-new {
+    position: absolute;
+    position-anchor: --info-anchor;
+    top: anchor(bottom);
+    left: anchor(center);
+    transform: translateX(-50%);
+    background: #007bff;
+    color: white;
+    padding: 6px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    display: none;
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* laat de tooltip zien als we hoveren op de knop */
+#info-btn:hover + .tooltip-new {
+    display: block;
+}
+
+/* ====== DROPDOWN: OUDE MANIER ====== */
+
+.dropdown-old {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    min-width: 150px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 6px 0;
+    list-style: none;
+    margin: 0;
+    display: none; /* JS zal dit togglen */
+    z-index: 1000;
+}
+
+.dropdown-old li a {
+    display: block;
+    padding: 8px 12px;
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dropdown-old li a:hover {
+    background: #f0f0f0;
+}
+
+/* ====== DROPDOWN: NIEUWE MANIER (ANCHOR POSITIONING) ====== */
+
+/* stap 1: geef de moderne knop een anchor-name */
+#modern-dropdown-btn {
+    anchor-name: --dd-anchor;
+}
+
+/* stap 2: menu koppelen via position-anchor */
+.dropdown-new {
+    position: absolute;
+    position-anchor: --dd-anchor;
+    top: anchor(bottom);
+    left: anchor(left);
+    background: #fff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    min-width: 160px;
+    box-shadow: 0 8px 20px rgba(0,0,255,0.15);
+    padding: 6px 0;
+    margin: 0;
+    list-style: none;
+    display: none; /* tonen via :hover */
+    z-index: 1000;
+}
+
+.dropdown-new li a {
+    display: block;
+    padding: 8px 12px;
+    color: #111;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dropdown-new li a:hover {
+    background: #e9f3ff;
+}
+
+/* hover state: als je boven de knop hovert, toon menu */
+#modern-dropdown-btn:hover + .dropdown-new,
+.dropdown-new:hover {
+    display: block;
+}
+
+/* ====== FALLBACKS ====== */
+
+/* Fallback voor browsers zonder anchor positioning voor tooltip */
+@supports not (position-anchor: --info-anchor) {
+    .tooltip-new {
+        /* fallback: gewoon onder de knop centreren alsof het een normale absolute child is */
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+/* Fallback voor browsers zonder anchor positioning voor dropdown */
+@supports not (position-anchor: --dd-anchor) {
+    .dropdown-new {
+        top: 100%;
+        left: 0;
+    }
+}

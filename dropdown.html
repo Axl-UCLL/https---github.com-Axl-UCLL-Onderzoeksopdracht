@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="nl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Anchor Positioning Demo – Dropdown</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+
+<body>
+    <!-- ===== NAVIGATIE ===== -->
+    <nav class="main-nav">
+        <a class="nav-link" href="index.html">Tooltip</a>
+        <a class="nav-link active" href="dropdown.html">Dropdown</a>
+    </nav>
+
+    <main class="page-content">
+        <h1>Demo: Dropdowns - Oud vs Nieuw</h1>
+
+        <!-- ================== OUD ================== -->
+        <h2>Oud voorbeeld – met JavaScript</h2>
+
+        <button id="old-dropdown-btn">Open menu ▼</button>
+        <ul class="dropdown-old" id="old-dropdown-menu">
+            <li><a href="#">Profiel</a></li>
+            <li><a href="#">Instellingen</a></li>
+            <li><a href="#">Uitloggen</a></li>
+        </ul>
+
+        <!-- ================== NIEUW ================== -->
+        <h2>Nieuw voorbeeld – CSS Anchor Positioning</h2>
+
+        <button id="modern-dropdown-btn">Open menu ▼</button>
+        <ul class="dropdown-new">
+            <li><a href="#">Profiel</a></li>
+            <li><a href="#">Instellingen</a></li>
+            <li><a href="#">Uitloggen</a></li>
+        </ul>
+
+        <p class="note">
+            Let op: dit nieuwe voorbeeld gebruikt <code>anchor-name</code> en
+            <code>position-anchor</code> zonder JavaScript. In browsers die het niet
+            ondersteunen, zie je de fallback positioning.
+        </p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
