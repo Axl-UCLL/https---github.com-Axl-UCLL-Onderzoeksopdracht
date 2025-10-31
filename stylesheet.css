@@ -114,12 +114,28 @@ button {
     position-anchor: --dd-anchor;
     top: anchor(bottom);
     left: anchor(left);
+
     background: #fff;
     border: 1px solid #000;
+
     list-style: none;
     margin: 0;
     padding: 0;
-    display: none;
+
+    display: none; /* tonen via :hover of :hover op knop */
+    min-width: 150px;
+}
+
+.dropdown-new li a {
+    display: block;
+    padding: 5px 10px;
+    color: #000;
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.dropdown-new li a:hover {
+    background: #f0f0f0;
 }
 
 /* toon dropdown bij hover */
